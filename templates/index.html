@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Cost Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Medical Insurance Cost Prediction</h2>
+        <form action="/predict" method="post">
+            <label>Age:</label>
+            <input type="number" name="Age" required>
+
+            <label>Diabetes:</label>
+            <input type="number" name="Diabetes" required>
+
+            <label>Blood Pressure Problems:</label>
+            <input type="number" name="BloodPressureProblems" required>
+
+            <label>Any Transplants:</label>
+            <input type="number" name="AnyTransplants" required>
+
+            <label>Any Chronic Diseases:</label>
+            <input type="number" name="AnyChronicDiseases" required>
+
+            <label>Height (cm):</label>
+            <input type="number" name="Height" required>
+
+            <label>Weight (kg):</label>
+            <input type="number" name="Weight" required>
+
+            <label>Known Allergies:</label>
+            <input type="number" name="KnownAllergies" required>
+
+            <label>History of Cancer in Family:</label>
+            <input type="number" name="HistoryOfCancerInFamily" required>
+
+            <label>Number of Major Surgeries:</label>
+            <input type="number" name="NumberOfMajorSurgeries" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_linear %}
+            <h3>Predictions:</h3>
+            <p>Linear Regression: ${{ prediction_linear }}</p>
+            <p>Random Forest: ${{ prediction_rf }}</p>
+            <p>XGBoost: ${{ prediction_xgb }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
